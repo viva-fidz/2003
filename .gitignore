@@ -1,6 +1,7 @@
 ﻿.pyc
 simple_shop/media
 simple_shop/local_settings.py
+simple_shop/settings.py
 .idea
 __pycache__
 myvenv
