@@ -1,0 +1,26 @@
+{% load staticfiles %}
+    <div class="container_top">
+        <div class="row">
+            <div class="col-xs-12">
+                <nav class="top_menu col-md-9">
+
+                    {% block menu %}
+                    {% include 'inc/inc-menu.html' %}
+                    {% endblock %}
+
+                </nav>
+        <!--CART-->
+
+                <div class="cart" onclick="toggle_cart()">                                      <img src="{% static '/img/cart.jpg/' %}">
+                </div>
+            </div>
+        </div>
+    </div>
+        <!--CART toggled-->
+    <div class="cart_toggled hide">
+        <ul>
+            <li>In cart: ''</li>
+            <li>Total: ''</li>
+        </ul>
+    </div>
+

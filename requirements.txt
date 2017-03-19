@@ -1,0 +1,9 @@
+
+django-mptt==0.8.7
+django-suit==0.2.24
+docutils==0.13.1
+lxml==3.7.3
+Markdown==2.6.7
+olefile==0.44
+Pillow==4.0.0
+suit==2.0.2

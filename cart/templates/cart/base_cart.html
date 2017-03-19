@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+
+<html lang="ru">
+<!-- HEAD -->
+<head>
+    <meta charset="UTF-8">
+
+    <script src="{% static 'js/bootstrap.min.js/' %}"></script>
+    <script src="{% static 'js/toggle_cart.js/' %}"></script>
+    <script src="{% static 'js/jquery.min.js/' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css/' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style_cart.css/' %}">
+
+    <title></title>
+</head>
+<!-- END HEAD -->
+<!-- BODY -->
+<body>
+<div class="container_top">
+    <div class="row">
+        <div class="panel_top_menu col-xs-12">
+            <div class="top_menu col-md-9">
+                {% block menu %}
+                {% include 'inc-menu.html' %}
+                {% endblock %}
+            </div>
+    <!--CART-->
+            <div class="cart" onclick="toggle_cart('hide', 'show')">Cart </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+<div class="container">
+    <div class="row">
+                      {% block content %}
+                        {% endblock %}
+    </div>
+</div>
+</body>
+<!-- END BODY -->
+
+</html>

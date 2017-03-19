@@ -1,0 +1,10 @@
+﻿.pyc
+simple_shop/media
+simple_shop/local_settings.py
+.idea
+__pycache__
+myvenv
+db.sqlite3
+.idea
+migrations
+
