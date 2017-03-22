@@ -1,4 +1,4 @@
-
+django==1.10.6
 django-mptt==0.8.7
 django-suit==0.2.24
 docutils==0.13.1

@@ -65,7 +65,7 @@ class Category(MPTTModel, OrderingBaseModel):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('shop:ProductListByCategory', args=[self.slug])
+        return reverse('shop:ProductList', args=[self.id])
 
     class Meta:
         verbose_name = _('Категория')
@@ -113,7 +113,7 @@ class Product(OrderingBaseModel):
 
 
     def get_absolute_url(self):
-        return reverse('shop:ProductDetail', args=[self.id, self.slug])
+        return reverse('shop:ProductDetail', args=[self.id])
 
 
     class Meta:

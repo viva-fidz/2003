@@ -3,23 +3,27 @@
 {% load static %}
 
 {% block title %}
-  {{ product.name }}
+  {{ product.name|title }}
 {% endblock %}
 
 {% block content %}
   <div class="product-detail">
-    <div class="col-sm-4">
-      <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no-image.jpg'%}{% endif %}" class="img-responsive">
-    </div>
-    <div class="col-sm-8">
-      <h1>{{ product.name }}</h1>
-      <h2><a href="{{ product.category.get_absolute_url }}">{{ product.category }}</a></h2>
-      <p class="price">
+      <div class="col-sm-4">
+        <img src="{% if product.image %}{{ product.image.url }}{% endif %}http://placehold.it/300x200" class="img-responsive">
+      </div>
+      <div class="col-sm-8">
+         <h1>{{ product.name }}</h1>
+            <h2><a href="{{ product.url }}">{{ product.category }}</a></h2>
+         <p class="price">
         {{ product.price }} руб.
-      </p>
-      <span>
+         </p>
+        <span>
         {{ product.description | linebreaks}}
-      </span>
-    </div>
+         </span>
+         <form action="/cart/CartAdd/{{product.id}}/" method="POST">
+                  {% csrf_token %}
+             <input type="submit" value="Добавить в корзину">
+         </form>
+      </div>
   </div>
 {% endblock %}

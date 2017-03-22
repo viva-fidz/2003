@@ -80,9 +80,9 @@ class FilterCategoryInline(admin.TabularInline):
 @admin.register(Category)
 class CategoryAdmin(MPTTModelAdmin):
     inlines = [CategoryPropertyInline, FilterCategoryInline, ]
-    suit_form_tabs = (('general', 'General'),
-                      ('params', 'Params'),
-                      ('filters', 'Filters'))
+    suit_form_tabs = (('general', 'Основные'),
+                      ('params', 'Параметры'),
+                      ('filters', 'Фильтры'))
     fieldsets = [
         ('General', {
             'classes': ('suit-tab', 'suit-tab-general',),

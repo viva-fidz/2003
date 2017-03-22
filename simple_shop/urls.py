@@ -16,19 +16,24 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from shop.views import *
-from cart.views import *
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.conf.urls.static import static
+from django.conf import settings
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', index, name='index'),
-    url(r'^contacts/thanks/', thanks, name='thanks'),
+    url(r'^contacts/thanks/$', thanks, name='thanks'),
     url(r'^contacts/$', contacts, name='contacts'),
+    url(r'^$', index, name='index'),
 
-    url(r'^shop/', include('shop.urls', namespace='shop')),
-#    url(r'^cart/', include('cart.urls')),
-    url(r'^cart/detail/$', CartDetail),
-    url(r'^cart/CartAdd/(\d?)/$', CartAdd),
-    url(r'^cart/remove/(\d+)/$', CartRemove, name='CartRemove'),
+    url(r'^cart/', include('cart.urls', namespace='cart')),
+    url(r'^shop/', include('shop.urls', namespace='shop'))
 
 ]
+
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+urlpatterns += staticfiles_urlpatterns()
 

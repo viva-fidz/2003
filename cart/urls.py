@@ -3,8 +3,10 @@ from .views import *
 
 
 urlpatterns = [
-    url(r'^$/cartAdd/(\d?)/$', CartAdd),
-    url(r'^$', CartDetail, name='CartDetail'),
-    url(r'^remove/(\d+)/$', CartRemove, name='CartRemove'),
 
+    url(r'CartAdd/(\d+)', CartAdd, name='CartAdd'),
+    url(r'details/$', CartDetail, name='CartDetail'),
+    url(r'remove/(?P<product_id>\d+)/$', CartRemove, name='CartRemove'),
+
+    url(r'^$', CartDetail, name='CartDetail')
 ]

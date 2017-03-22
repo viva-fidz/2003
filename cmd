@@ -4,13 +4,14 @@ python manage.py fill_db
 python manage.py startapp
 python manage.py createsuperuser
 
-
-git status
-git add --all
-
-git commit -m "Added smth"
-git push
-
+***********************************************
+������� �� git`e					*
+git init						*		
+git add --all					*
+git commit -m "Added smth"				*
+git remote add origin https://github.com/viva-fidz/2003.git	*
+git push						*
+************************************************
 PythonAnywhere:
 
 git pull
@@ -27,4 +28,6 @@ cd ..
 myvenv\Scripts\activate
 
 cd simple_shop
+python manage.py fill_db
+
 python manage.py runserver

@@ -3,8 +3,16 @@ from django.views.decorators.http import require_POST
 from shop.models import Product
 from .cart import Cart
 from .forms import CartAddProductForm
-from cart.models import *
+from django.http import Http404, JsonResponse
+from django.template import loader
+from django.template.context_processors import csrf
 
+
+def details(request):
+    products = Product.objects.all()
+    title = 'Корзина'
+    return render(request, 'cart/details.html', {'title': title,
+                                          'products': products})
 
 @require_POST
 def CartAdd(request, product_id):
@@ -21,9 +29,29 @@ def CartRemove(request, product_id):
     cart = Cart(request)
     product = get_object_or_404(Product, id=product_id)
     cart.remove(product)
-    return redirect('cart/CartDetail')
-
+    return redirect('cart:CartDetail')
 
 def CartDetail(request):
     cart = Cart(request)
-    return render(request, 'cart/detail.html', {'cart': cart})
+    for item in cart:
+        item['update_quantity_form'] = CartAddProductForm(
+                                        initial={
+                                            'quantity': item['quantity'],
+                                            'update': True
+                                        })
+
+    return render(request, 'cart/details.html', {'cart': cart})
+
+def get_cart_form(request, product_id):
+    """ Заполняет форму
+    """
+    if request.is_ajax():
+        cart = get_object_or_404(Cart, id=product_id)
+        cart_form = CartAddProductForm
+        context = {'form': cart_form, 'id': product_id}
+        context.update(csrf(request))
+        html = loader.render_to_string('index.html', context)
+        data = {'errors': False, 'html': html}
+        return JsonResponse(data)
+    raise Http404
+

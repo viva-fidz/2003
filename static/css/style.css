@@ -10,10 +10,13 @@ body {
     margin-bottom: 120px;
 }
 body a {
-    color: white;
+    color: black;
 }
 body a:hover {
     color: #ffd25a;
+}
+nav.top_menu a, footer a{
+    color: white;
 }
 .container_shop {
      margin: 10px;
@@ -34,9 +37,17 @@ body a:hover {
     display: flex;
     align-items: center;
 }
-.cart {
+
+.cart_top {
     float: right;
     margin: 10px;
+}
+.cart_header {
+    background-color: #ffd25a;
+    margin: 20px 0;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    width: 100%;
 }
 li {
     list-style: none;
