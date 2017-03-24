@@ -9,19 +9,19 @@
          {% for product in products %}
 
         <div class="thumbnails col-md-3 col-xs-">
-
               <div class="thumbnail"><a href="/shop/product/{{product.id}}">
-                    <img src="http://placehold.it/300x200"
+                   <form action="/cart/CartAdd/{{product.id}}" method="POST">
+
+                    <img src="{{ product.image.url }}"
                          alt="{{ product.name }}">
-                    <!--"{% static '{{ product.image }}' %}"-->
                     <h3>{{ product.name }}</h3>
                     <p>{{ product.category }}</p>
                     <p>{{ product.price }}</p></a>
 
-              <form action="cart/CartAdd/{{product.id}}" method="POST">
+
                   {% csrf_token %}
                   <input type="submit" value="Добавить в корзину">
-              </form>
+                </form>
               </div>
          </div>
         {% endfor %}

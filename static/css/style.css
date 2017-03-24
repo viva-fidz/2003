@@ -7,16 +7,13 @@ html {
     min-height: 100%;
 }
 body {
-    margin-bottom: 120px;
+    margin-bottom: 120px !important;
 }
 body a {
     color: black;
 }
-body a:hover {
+body a:hover, nav.top_menu a, footer a, #sidebar a {
     color: #ffd25a;
-}
-nav.top_menu a, footer a{
-    color: white;
 }
 .container_shop {
      margin: 10px;
@@ -71,6 +68,13 @@ li {
 }
 .thumbnail {
     display: block;
+    margin-top: 30px;
+}
+.img-responsive {
+    margin-top: 100px;
+}
+#main {
+    margin-bottom: 65px;
 }
 .shop_category {
     font-size: 17px;
@@ -83,11 +87,15 @@ li {
     margin-top: 35px;
     margin-bottom: 35px;
 }
-footer {
+#sidebar  {
+    margin-top: 65px;
+}
+.footer {
     background-color: #323b44;
     padding: 20px;
     position: absolute;
     bottom: 0;
     width: 100%;
     height: 120px;
+    color: #ffd25a;
 }

@@ -1,4 +1,4 @@
-{% extends "product/base_product.html" %}
+{% extends "base.html" %}
 
 {% load static %}
 
@@ -9,11 +9,11 @@
 {% block content %}
   <div class="product-detail">
       <div class="col-sm-4">
-        <img src="{% if product.image %}{{ product.image.url }}{% endif %}http://placehold.it/300x200" class="img-responsive">
+        <img src="{{ product.image.url }}" class="img-responsive">
       </div>
       <div class="col-sm-8">
          <h1>{{ product.name }}</h1>
-            <h2><a href="{{ product.url }}">{{ product.category }}</a></h2>
+            <h2><a href="shop/category/{{ product.category.id }}">{{ product.category }}</a></h2>
          <p class="price">
         {{ product.price }} руб.
          </p>

@@ -12,7 +12,8 @@ def details(request):
     products = Product.objects.all()
     title = 'Корзина'
     return render(request, 'cart/details.html', {'title': title,
-                                          'products': products})
+                                                 'products': products})
+
 
 @require_POST
 def CartAdd(request, product_id):
@@ -22,8 +23,9 @@ def CartAdd(request, product_id):
     if form.is_valid():
         cd = form.cleaned_data
         cart.add(product=product, quantity=cd['quantity'],
-                                  update_quantity=cd['update'])
+                 update_quantity=cd['update'])
     return redirect('cart:CartDetail')
+
 
 def CartRemove(request, product_id):
     cart = Cart(request)
@@ -31,27 +33,27 @@ def CartRemove(request, product_id):
     cart.remove(product)
     return redirect('cart:CartDetail')
 
+
 def CartDetail(request):
     cart = Cart(request)
     for item in cart:
         item['update_quantity_form'] = CartAddProductForm(
-                                        initial={
-                                            'quantity': item['quantity'],
-                                            'update': True
-                                        })
+            initial={
+                'quantity': item['quantity'],
+                'update': True
+            })
 
     return render(request, 'cart/details.html', {'cart': cart})
+
 
 def get_cart_form(request, product_id):
     """ Заполняет форму
     """
     if request.is_ajax():
-        cart = get_object_or_404(Cart, id=product_id)
         cart_form = CartAddProductForm
         context = {'form': cart_form, 'id': product_id}
         context.update(csrf(request))
-        html = loader.render_to_string('index.html', context)
+        html = loader.render_to_string('cart/details.html', context)
         data = {'errors': False, 'html': html}
         return JsonResponse(data)
     raise Http404
-

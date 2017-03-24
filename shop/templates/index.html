@@ -1,11 +1,10 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
     <!--pix promo block-->
-    <div class="offset-1 col-md-10 col-xs-12">
     {% block header_promo %}
 
     {{ block.super }} {% include 'inc/pix-promo.html' %} {{ endblock }}
-    </div>
+
 
     <div class="row">
         <p class="col-xs-12 text-center" id="promo_text">

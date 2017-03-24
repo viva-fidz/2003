@@ -21,6 +21,7 @@ def index(request):
 
 def contacts(request):
     title = 'Контакты'
+    categories = Category.objects.all()
     if request.method == 'POST':
         form = ContactForm(request.POST)
         # Если форма заполнена корректно, сохраняем все введённые                   пользователем значения
@@ -39,12 +40,12 @@ def contacts(request):
             except BadHeaderError:  # Защита от уязвимости
                 return HttpResponse('Invalid header found')
                 # Переходим на другую страницу, если сообщение отправлено
-            return render(request, 'thanks.html', {'title': title})
+            return render(request, 'thanks.html', {'title': title,  'categories': categories})
     else:
         # Заполняем форму
         form = ContactForm()
         # Отправляем форму на страницу
-    return render(request, 'contacts.html', {'title': title, 'form': form})
+    return render(request, 'contacts.html', {'title': title, 'form': form,  'categories': categories})
 
 
 def thanks(request):
@@ -66,11 +67,20 @@ def ProductList(request, id):
         'products': products
     })
 
+def CategoryList(request):
+    categories = Category.objects.all()
+    products = Product.objects.all()
+    return render(request, 'category/list.html', {
+        'categories': categories,
+        'products': products
+    })
+
 
 # Страница товара
 def ProductDetail(request, product_id=id):
+    categories = Category.objects.all()
     product = get_object_or_404(Product, id=product_id)
-    return render(request, 'product/detail.html', {'product': product})
+    return render(request, 'product/detail.html', {'product': product,  'categories': categories})
 
 # Страница с товарами
 
