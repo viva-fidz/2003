@@ -20,10 +20,19 @@
         <span>
         {{ product.description | linebreaks}}
          </span>
-         <form action="/cart/CartAdd/{{product.id}}/" method="POST">
-                  {% csrf_token %}
-             <input type="submit" value="Добавить в корзину">
-         </form>
+         <!--<form action="/cart/CartAdd/{{product.id}}/" method="POST">-->
+                  <!--{% csrf_token %}-->
+             <!--<input type="submit" value="Добавить в корзину">-->
+         <!--</form>-->
+          <div>
+              <form id="form_buying_product" class="form-inline">
+                  <input type="number" class="form-control" id="number">
+
+                  <div class="form-group">
+                    <button type="submit" id="submit_btn" class="btn btn-success btn-buy" data-product_id = "{{ product.id }}" data-name = "{{ product.name }}" data-price = "{{ product.price }}">Купить</button>
+                  </div>
+              </form>
+          </div>
       </div>
   </div>
 {% endblock %}
