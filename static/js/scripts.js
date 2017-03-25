@@ -5,13 +5,10 @@ $(document).ready(function(){
         e.preventDefault();
         console.log('123');
         var nmb = $('#number').val();
-        console.log(nmb);
         var submit_btn = $('#submit_btn');
         var product_id = submit_btn.data('product_id');
         var product_name = submit_btn.data('name');
         var product_price = submit_btn.data('price');
-        console.log(product_id);
-        console.log(product_name);
         $('.cart_toggled ul').append('<li><u>' + product_name + '</u>' + ' (' + nmb + 'шт.) = ' + product_price + 'руб  ' + '<a href="#" class="delete_item"> x </a>' + '</li>');
     })
 });
