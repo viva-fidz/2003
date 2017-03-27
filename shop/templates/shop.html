@@ -9,14 +9,14 @@
          {% for product in products %}
 
         <div class="thumbnails col-md-3 col-xs-">
-              <div class="thumbnail"><a href="/shop/product/{{product.id}}">
+              <div class="thumbnail">
                    <form action="/cart/CartAdd/{{product.id}}" method="POST">
-
-                    <img src="{{ product.image.url }}"
-                         alt="{{ product.name }}">
-                    <h3>{{ product.name }}</h3>
-                    <p>{{ product.category }}</p>
-                    <p>{{ product.price }}</p></a>
+                    <a href="/shop/product/{{product.id}}">
+                        <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                        <h3>{{ product.name }}</h3>
+                        <p>{{ product.category }}</p>
+                        <p>{{ product.price }}</p>
+                    </a>
 
 
                   {% csrf_token %}
