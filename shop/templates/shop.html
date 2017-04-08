@@ -3,25 +3,23 @@
 {% for category in categories %}
 <section>
     <p class="shop_category text-center grp-collapse">
-        <a href="shop/category/{{ category.id }}">{{ category.name }}</a>
+        <a href="shop/category/{{ category.id }}/">{{ category.name }}</a>
     </p>
     <div class="row">
          {% for product in products %}
 
         <div class="thumbnails col-md-3 col-xs-">
               <div class="thumbnail">
-                   <form action="/cart/CartAdd/{{product.id}}" method="POST">
+                     <form action="/cart/CartAdd/{{product.id}}" method="POST">
                     <a href="/shop/product/{{product.id}}">
                         <img src="{{ product.image.url }}" alt="{{ product.name }}">
                         <h3>{{ product.name }}</h3>
                         <p>{{ product.category }}</p>
                         <p>{{ product.price }}</p>
                     </a>
-
-
-                  {% csrf_token %}
+                      {% csrf_token %}
                   <input type="submit" value="Добавить в корзину">
-                </form>
+                  </form>
               </div>
          </div>
         {% endfor %}
