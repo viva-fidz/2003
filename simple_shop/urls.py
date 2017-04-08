@@ -26,9 +26,9 @@ urlpatterns = [
     url(r'^contacts/thanks/$', thanks, name='thanks'),
     url(r'^contacts/$', contacts, name='contacts'),
     url(r'^$', index, name='index'),
-
     url(r'^cart/', include('cart.urls', namespace='cart')),
-    url(r'^shop/', include('shop.urls', namespace='shop'))
+    url(r'^shop/', include('shop.urls', namespace='shop')),
+    url(r'^mycart/', include('myCartApp.urls', namespace='mycart'))
 
 ]
 

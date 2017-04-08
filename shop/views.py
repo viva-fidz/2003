@@ -3,9 +3,6 @@ from django.http import HttpResponse
 from django.core.mail import send_mail, BadHeaderError
 from shop.models import *
 from simple_shop.forms import *
-from cart.forms import CartAddProductForm
-from django.shortcuts import render
-from django.views.generic import ListView
 from .models import Product
 
 
@@ -17,7 +14,6 @@ def index(request):
     return render(request, 'index.html', {'title': title,
                                           'products': products,
                                           'categories': categories})
-
 
 def contacts(request):
     title = 'Контакты'
@@ -40,12 +36,12 @@ def contacts(request):
             except BadHeaderError:  # Защита от уязвимости
                 return HttpResponse('Invalid header found')
                 # Переходим на другую страницу, если сообщение отправлено
-            return render(request, 'thanks.html', {'title': title,  'categories': categories})
+            return render(request, 'thanks.html', {'title': title, 'categories': categories})
     else:
         # Заполняем форму
         form = ContactForm()
         # Отправляем форму на страницу
-    return render(request, 'contacts.html', {'title': title, 'form': form,  'categories': categories})
+    return render(request, 'contacts.html', {'title': title, 'form': form, 'categories': categories})
 
 
 def thanks(request):
@@ -67,6 +63,7 @@ def ProductList(request, id):
         'products': products
     })
 
+
 def CategoryList(request):
     categories = Category.objects.all()
     products = Product.objects.all()
@@ -80,25 +77,25 @@ def CategoryList(request):
 def ProductDetail(request, product_id=id):
     categories = Category.objects.all()
     product = get_object_or_404(Product, id=product_id)
-    return render(request, 'product/detail.html', {'product': product,  'categories': categories})
+    return render(request, 'product/detail.html', {'product': product, 'categories': categories})
 
-# Страница с товарами
+    # Страница с товарами
 
-# def ProductList(request, id):
-#     categories = Category.objects.all()
-#     products = Product.objects.filter(available=True)
-#     category = get_object_or_404(Category,  id=id)
-#     products = products.filter(category=category)
-#     return render(request, 'shop/product/list.html', {
-#         'category': category,
-#         'categories': categories,
-#         'products': products
-#     })
+    # def ProductList(request, id):
+    #     categories = Category.objects.all()
+    #     products = Product.objects.filter(available=True)
+    #     category = get_object_or_404(Category,  id=id)
+    #     products = products.filter(category=category)
+    #     return render(request, 'shop/product/list.html', {
+    #         'category': category,
+    #         'categories': categories,
+    #         'products': products
+    #     })
 
-# Страница товара
-# def ProductDetail(request, id, slug):
-#     product = get_object_or_404(Product, id=id, slug=slug, available=True)
-#     cart_product_form = CartAddProductForm()
-#     return render(request, 'shop/product/detail.html',
-#                              {'product': product,
-# 'cart_product_form': cart_product_form})
+    # Страница товара
+    # def ProductDetail(request, id, slug):
+    #     product = get_object_or_404(Product, id=id, slug=slug, available=True)
+    #     cart_product_form = CartAddProductForm()
+    #     return render(request, 'shop/product/detail.html',
+    #                              {'product': product,
+    # 'cart_product_form': cart_product_form})
