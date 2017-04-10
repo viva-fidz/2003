@@ -1,15 +1,25 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
-    <!--pix promo block-->
-    {% block header_promo %}
 
-    {{ block.super }} {% include 'inc/pix-promo.html' %} {{ endblock }}
+{% block style %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/alter.css/' %}">
+    {{ endblock }}
+{% endblock %}
 
+{% block header %}
+<div class="row">
+    <div id="logo" class="col-md-3"><a href="#"> </a></div>
+    <div class="promo_text col-md-9 text-right"> Lorem. We aim high at being focused on
+        building relationships with our clients and community.</div>
+</div>
+    {% include 'inc/inc-header.html' %}
+{% endblock %}
 
+{% block pix %}
+<div class="container">
     <div class="row">
-        <p class="col-xs-12 text-center" id="promo_text">
-            Бесплатная доставка по России / Кратчайшие сроки
-        </p>
+        <img src="{% static 'img/04.jpg' %}">
     </div>
-
-    {% endblock %}
+</div>
+{% endblock %}
