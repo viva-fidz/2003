@@ -13,8 +13,10 @@
     <meta name="keywords" content="Покукпка, продажа, аккумулятор, недорого">
 
     <!-- STYLE -->
+    {% block style %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css/' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css/' %}">
+   {% endblock %}
     <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
     <![endif]-->
@@ -31,6 +33,7 @@
 <!-- END HEAD -->
     <!-- BODY -->
     <body>
+    <div class="bg">
         <header>
             {% block header %}
                 {% include 'inc/inc-header.html' %}
@@ -38,6 +41,13 @@
             {% endblock %}
         </header>
 
+    </div>
+
+    {% block pix %}
+
+
+
+    {% endblock %}
         <div class="container">
                 <div class="row">
                     {% block content %}
@@ -46,7 +56,7 @@
                 </div>
 
         </div>
-
+    </div>
         <!-- FOOTER -->
         <footer class="footer">
 
