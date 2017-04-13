@@ -21,7 +21,7 @@ python manage.py collectstatic
 
 git remote add origin https://github.com/viva-fidz/simple_shop.git
 
-C:\Users\ctrl\AppData\Local\Programs\Python\Python36\python.exe -m venv myvenv
+path to python.exe -m venv myvenv
 ******python manage.py fill_db
 cd ..
 
