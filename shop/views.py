@@ -1,9 +1,9 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.core.mail import send_mail, BadHeaderError
-from shop.models import *
+from shop.models import Category, Product
 from simple_shop.forms import *
-from .models import Product
+from .models import *
 
 
 # Create your views here.
@@ -11,16 +11,20 @@ def index(request):
     categories = Category.objects.all()
     products = Product.objects.all()
     title = 'Главная'
+    name = 'index'
     return render(request, 'index.html', {'title': title,
                                           'products': products,
-                                          'categories': categories})
+                                          'categories': categories,
+                                          'name': name
+                                          })
 
 def contacts(request):
     title = 'Контакты'
     categories = Category.objects.all()
     if request.method == 'POST':
         form = ContactForm(request.POST)
-        # Если форма заполнена корректно, сохраняем все введённые                   пользователем значения
+        # Если форма заполнена корректно, сохраняем все введённые
+        # пользователем значения
         if form.is_valid():
             subject = form.cleaned_data['subject']
             sender = form.cleaned_data['sender']
@@ -53,11 +57,13 @@ def thanks(request):
 
 # Страница с товарами
 def ProductList(request, id):
+    title = 'Товары'
     category = get_object_or_404(Category, id=id)
     categories = Category.objects.all()
     products = Product.objects.all()
     products.filter(category=category)
     return render(request, 'product/list.html', {
+        'title': title,
         'category': category,
         'categories': categories,
         'products': products
@@ -65,9 +71,11 @@ def ProductList(request, id):
 
 
 def CategoryList(request):
+    title = 'Категории'
     categories = Category.objects.all()
     products = Product.objects.all()
     return render(request, 'category/list.html', {
+        'title': title,
         'categories': categories,
         'products': products
     })

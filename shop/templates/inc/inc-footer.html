@@ -1,15 +1,18 @@
 {% load staticfiles %}
-<div class="col-xs-4">
+<div class="col-md-4">
    <ul>
        {% for category in categories %}
        <li> <a href="/shop/category/{{ category.id }}/">{{ category.name }}</a> </li>
        {% endfor %}
    </ul>
 </div>
-<div class="col-xs-4">
+<div class="col-md-4">
    <ul>
-       <li> +7 (777) 77 77 </li>
+       <li> +7 (777) 777 77 77 </li>
        <li> magazine@magaz.in</li>
    </ul>
 </div>
-<div class="col-xs-4">г. Москва, ул. Московская, д. 93</div>
+<div class="col-md-4">г. Москва, ул. Московская, д. 93</div>
+
+<!--  <div id="viva" class="col-xs-12 text-center"><strong>
+        {% now "Y" as current_year %} Copyright  &copy; vivafidz {{ current_year }}  </strong></div> -->

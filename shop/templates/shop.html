@@ -1,5 +1,6 @@
+{% extends 'index.html' %}
 {% load staticfiles %}
-
+  {% block content %}
 {% for category in categories %}
 <section>
     <p class="shop_category text-center grp-collapse">
@@ -25,4 +26,4 @@
         {% endfor %}
     </div>
 </section>
-{% endfor %}
+{% endfor %}  {% endblock %}

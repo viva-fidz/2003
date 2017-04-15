@@ -12,7 +12,7 @@ class FilterCategory(OrderingBaseModel):
     category = models.ForeignKey('shop.Category',
         on_delete=models.CASCADE,
         related_name='filtercategories',
-        verbose_name =_('Category'))
+        verbose_name =_('Категортя'))
     slug = models.CharField(_("Slug"),
             default="",
             blank=True,
@@ -25,8 +25,8 @@ class FilterCategory(OrderingBaseModel):
         return self.name
 
     class Meta:
-        verbose_name = _('Filter Category')
-        verbose_name_plural = _('Filters Category')
+        verbose_name = _('фильтр категорий')
+        verbose_name_plural = _('фильтры категорий')
 
 
 
@@ -34,7 +34,7 @@ class FilterSelect(OrderingBaseModel):
     filter_category = models.ForeignKey(FilterCategory,
         on_delete=models.CASCADE,
         related_name='filterselect',
-        verbose_name =_('Filter Category'))
+        verbose_name =_('фильтр категории'))
     slug = models.CharField(_("Slug"),
             default="",
             blank=True,
@@ -70,7 +70,7 @@ class ProductFilter(OrderingBaseModel):
     values = models.ManyToManyField(FilterSelect,
         related_name='filtervalues',
         blank=True,
-        verbose_name =_('Values'))
+        verbose_name =_('Значения'))
     def __str__(self):
         return str(self.id)
 

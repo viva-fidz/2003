@@ -2,7 +2,6 @@ $(document).ready(function(){
     var form = $('#form_buying_product');
     form.on('submit', function(e){
         e.preventDefault();
-        console.log('123');
         var nmb = $('#number').val();
         var submit_btn = $('#submit_btn');
         var product_id = submit_btn.data('product_id');

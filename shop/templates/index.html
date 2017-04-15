@@ -1,15 +1,59 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
-    <!--pix promo block-->
-    {% block header_promo %}
-
-    {{ block.super }} {% include 'inc/pix-promo.html' %} {{ endblock }}
 
 
-    <div class="row">
-        <p class="col-xs-12 text-center" id="promo_text">
-            Бесплатная доставка по России / Кратчайшие сроки
-        </p>
+{% block header %}
+<div class="promo row">
+    <div id="logo" class="col-md-2"> <img  src="{% static '/img/logo.png' %}"> LOGO </div>
+    <div class="promo_text col-md-8"> Lorem. We aim high at being focused on
+        building relationships with our clients and community.</div>
+
+    <!--CART-->
+    <div class="cart_top col-md-1" onclick="toggle_cart()">
+        <img src="{% static '/img/1.jpg' %}">
+    </div>
+</div>
+    <!--CART toggled-->
+    <div class="cart_toggled hide">
+   {% include 'cart/details.html' %}
     </div>
 
-    {% endblock %}
+
+    {% include 'inc/inc-header.html' %}
+{% endblock %}
+
+{% block pix %}
+<div class="container">
+    <div class="row">
+        <img src="{% static 'img/04.jpg' %}" class="col-xs-12">
+    </div>
+</div>
+ {% endblock %}
+ {% block content %}<div class="container">
+{% for category in categories %}
+<section>
+    <p class="shop_category text-center grp-collapse">
+        <a href="shop/category/{{ category.id }}/">{{ category.name }}</a>
+    </p>
+    <div class="row">
+         {% for product in products %}
+
+        <div class="thumbnails col-md-3 col-xs-6">
+              <div class="thumbnail">
+                     <form action="/cart/CartAdd/{{product.id}}" method="POST">
+                    <a href="/shop/product/{{product.id}}">
+                        <img src="{{ product.image }}" alt="{{ product.name }}">
+                        <h3>{{ product.name }}</h3>
+                        <p>{{ product.category }}</p>
+                        <p>{{ product.price }}</p>
+                    </a>
+                      {% csrf_token %}
+                  <input type="submit" value="Добавить в корзину">
+                  </form>
+              </div>
+         </div>
+        {% endfor %}
+    </div>
+</section>
+{% endfor %}   </div>
+{% endblock %}
