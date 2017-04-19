@@ -35,6 +35,7 @@ body > header:nth-child(1) > div:nth-child(1) {
 .top_menu {
     float: left;
     margin: 20px;
+    margin-left: 5px;
 }
 .promo {
     display: flex;
