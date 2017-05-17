@@ -10,15 +10,22 @@
 
         <div class="thumbnails col-md-3 col-xs-">
               <div class="thumbnail">
-                     <form action="/cart/CartAdd/{{product.id}}" method="POST">
+                     <form id="form_buying_product" action="{% url 'cart_adding' %}" method="POST" >
                     <a href="/shop/product/{{product.id}}">
-                        <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                        <img src="{{ product.image }}" alt="{{ product.name }}">
                         <h3>{{ product.name }}</h3>
                         <p>{{ product.category }}</p>
                         <p>{{ product.price }}</p>
                     </a>
                       {% csrf_token %}
-                  <input type="submit" value="Добавить в корзину">
+                         <!--<input type="number" class="form-control" id="number" min="1" value="1">-->
+
+                         <!--<div class="form-group">-->
+                             <!--<button type="submit" id="submit_btn" class="btn btn-success btn-buy"-->
+                                     <!--data-product_id="{{ product.id }}" data-name="{{ product.name }}"-->
+                                     <!--data-price="{{ product.price.url }}">Купить-->
+                             <!--</button>-->
+                         <!--</div>-->
                   </form>
               </div>
          </div>
@@ -26,3 +33,4 @@
     </div>
 </section>
 {% endfor %}
+<script src="{% static 'js/scripts.js/' %}"></script>

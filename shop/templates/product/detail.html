@@ -3,35 +3,38 @@
 {% load static %}
 
 {% block title %}
-  {{ product.name|title }}
+{{ product.name|title }}
 {% endblock %}
 
 {% block content %}
-  <div class="product-detail">
-      <div class="col-sm-4">
+<div class="product-detail">
+    <div class="col-sm-4">
         <img src="{{ product.image.url }}" class="img-responsive">
-      </div>
-      <div class="col-sm-8">
-         <h1>{{ product.name }}</h1>
-            <h2><a href="/shop/category/{{ product.category.id }}/">{{ product.category }}</a></h2>
-         <p class="price">
-        {{ product.price }} руб.
-         </p>
+    </div>
+    <div class="col-sm-8">
+        <h1>{{ product.name }}</h1>
+        <h2><a href="/shop/category/{{ product.category.id }}/">{{ product.category }}</a></h2>
+        <p class="price">
+            {{ product.price }} руб.
+        </p>
         <span>
         {{ product.description | linebreaks}}
          </span>
 
-          <div>
-              <p class="price">{{ product.price }} руб.</p>
-     <form id="form_buying_product" class="form-inline">
-                  {% csrf_token %}
-                  <input type="number" class="form-control" id="number" min="1" value="1">
+        <div>
+            <p class="price">{{ product.price }} руб.</p>
+            <form id="form_buying_product" class="form-inline" action="{% url 'cart_adding' %}">
+                {% csrf_token %}
+                <input type="number" class="form-control" id="number" min="1" value="1">
 
-                  <div class="form-group">
-                    <button type="submit" id="submit_btn" class="btn btn-success btn-buy" data-product_id = "{{ product.id }}" data-name = "{{ product.name }}" data-price = "{{ product.price }}">Купить</button>
-                  </div>
-              </form>
-          </div>
-      </div>
-  </div>
+                <div class="form-group">
+                    <button type="submit" id="submit_btn" class="btn btn-success btn-buy"
+                            data-product_id="{{ product.id }}" data-name="{{ product.name }}"
+                            data-price="{{ product.price }}">Купить
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock %}

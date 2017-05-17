@@ -2,9 +2,9 @@
 {% load staticfiles %}
 
 {% block style %}
-    {{ block.super }}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/alter.css/' %}">
-    {{ endblock }}
+{{ block.super }}
+<link rel="stylesheet" type="text/css" href="{% static 'css/alter.css/' %}">
+{{ endblock }}
 {% endblock %}
 
 {% block header %}
@@ -13,7 +13,7 @@
     <div class="promo_text col-md-9 text-right"> Lorem. We aim high at being focused on
         building relationships with our clients and community.</div>
 </div>
-    {% include 'inc/inc-header.html' %}
+{% include 'inc/inc-header.html' %}
 {% endblock %}
 
 {% block pix %}
@@ -23,3 +23,14 @@
     </div>
 </div>
 {% endblock %}
+
+<div class="container">
+    <div class="row">
+        {% block content %}
+        {% for product in products %}
+
+        {% include 'shop.html' %}
+         {% endfor %}
+        {% endblock %}
+    </div>
+</div>

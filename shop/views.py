@@ -11,9 +11,48 @@ def index(request):
     categories = Category.objects.all()
     products = Product.objects.all()
     title = 'Главная'
+
+    session_key = request.session.session_key
+    if not session_key:
+        request.session.cycle_key()
     return render(request, 'index.html', {'title': title,
                                           'products': products,
-                                          'categories': categories})
+                                          'categories': categories,
+                                          })
+
+# Страница с товарами
+def ProductList(request, id):
+    category = get_object_or_404(Category, id=id)
+    categories = Category.objects.all()
+    products = Product.objects.all()
+    products.filter(category=category)
+    return render(request, 'product/list.html', {
+        'category': category,
+        'categories': categories,
+        'products': products
+    })
+
+
+def CategoryList(request):
+    categories = Category.objects.all()
+    products = Product.objects.all()
+    return render(request, 'category/list.html', {
+        'categories': categories,
+        'products': products,
+
+    })
+
+
+# Страница товара
+def ProductDetail(request, product_id=id):
+    categories = Category.objects.all()
+    product = get_object_or_404(Product, id=product_id)
+    session_key = request.session.session_key
+    if not session_key:
+        request.session.cycle_key()
+    print(request.session.session_key)
+    return render(request, 'product/detail.html', {'product': product, 'categories': categories} )
+
 
 def contacts(request):
     title = 'Контакты'
@@ -50,52 +89,3 @@ def thanks(request):
     return render(request, 'thanks.html', {'title': title,
                                            'categories': categories})
 
-
-# Страница с товарами
-def ProductList(request, id):
-    category = get_object_or_404(Category, id=id)
-    categories = Category.objects.all()
-    products = Product.objects.all()
-    products.filter(category=category)
-    return render(request, 'product/list.html', {
-        'category': category,
-        'categories': categories,
-        'products': products
-    })
-
-
-def CategoryList(request):
-    categories = Category.objects.all()
-    products = Product.objects.all()
-    return render(request, 'category/list.html', {
-        'categories': categories,
-        'products': products
-    })
-
-
-# Страница товара
-def ProductDetail(request, product_id=id):
-    categories = Category.objects.all()
-    product = get_object_or_404(Product, id=product_id)
-    return render(request, 'product/detail.html', {'product': product, 'categories': categories})
-
-    # Страница с товарами
-
-    # def ProductList(request, id):
-    #     categories = Category.objects.all()
-    #     products = Product.objects.filter(available=True)
-    #     category = get_object_or_404(Category,  id=id)
-    #     products = products.filter(category=category)
-    #     return render(request, 'shop/product/list.html', {
-    #         'category': category,
-    #         'categories': categories,
-    #         'products': products
-    #     })
-
-    # Страница товара
-    # def ProductDetail(request, id, slug):
-    #     product = get_object_or_404(Product, id=id, slug=slug, available=True)
-    #     cart_product_form = CartAddProductForm()
-    #     return render(request, 'shop/product/detail.html',
-    #                              {'product': product,
-    # 'cart_product_form': cart_product_form})

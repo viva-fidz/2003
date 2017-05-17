@@ -12,16 +12,20 @@ body {
 body a {
     color: black;
 }
-body a:hover, nav.top_menu a, footer a, #sidebar a {
+body a:hover, nav.top_menu a, footer a, #sidebar a:hover {
     color: #ffd25a;
+    font: Helvetica, Arial, sans-serif;
 }
-
+body > header:nth-child(1) > div:nth-child(1) {
+     padding: 0;
+}
 .container_shop {
      margin: 10px;
 }
 .container_top, #promo_text {
     color: #ffd25a;
     background-color: #323b44;
+    z-index: 4;
 }
 .container_top a {
     text-decoration: none;
@@ -30,47 +34,56 @@ body a:hover, nav.top_menu a, footer a, #sidebar a {
 .top_menu {
     float: left;
     margin: 20px;
+    margin-left: 5px;
 }
 .promo {
     display: flex;
     align-items: center;
-}
 
-.cart_top {
-    float: right;
-    margin: 10px;
 }
-
+.container_top > div:nth-child(1) {
+    margin-left:0;
+    margin-right:0;
+}
+#logo {
+    margin: 20px;
+}
+#logo {
+    display: inline-block;
+    float: left;
+}
 li {
     list-style: none;
 }
 .cart_toggled {
-    min-width: 100%;
+    width: 100%;
     min-height: 100%;
     background-color: rgba(0,0,0,.8);
     position: absolute;
     z-index: 2;
+
 }
 .cart_body {
     background-color: rgba(250,250,250,1);
     min-height: 100%;
     width:30%;
     float: right;
+    color: black;
 }
 .cart_header {
      background-color: #ffd25a;
-     padding-top: 15px;
-     padding-bottom: 15px;
-
+     padding-top: 20px;
+     padding-bottom: 20px;
 }
 .cart_order{
      margin-top: 80%;
      padding-top: 80%;
      padding-bottom: 15px;
 }
-
+#cart_total_nmb {
+    font-weight: 800;
+}
 #promo_text {
-    margin: 0 auto;
     padding-top: 15px;
     padding-bottom: 15px;
 
@@ -83,13 +96,17 @@ li {
     margin-top: 100px;
 }
 #main {
-    margin
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+#main h1 {
+    clear: both;
 }
 .shop_category {
     font-size: 17px;
     background-color: grey;
     margin-top: 15px;
-    padding-top: 15px;
+    padding-top: 5px;
     padding-bottom: 15px;
 }
 #contacts form {
@@ -97,7 +114,7 @@ li {
     margin-bottom: 35px;
 }
 #sidebar  {
-    margin-top: 65px;
+    margin-top: 85px;
 }
 #form_buying_product {
     margin-bottom: 35px;
@@ -105,9 +122,10 @@ li {
 .footer {
     background-color: #323b44;
     padding: 20px;
+    margin: 20px;
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 120px;
     color: #ffd25a;
+    height: 100px;
 }

@@ -25,9 +25,11 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^contacts/thanks/$', thanks, name='thanks'),
     url(r'^contacts/$', contacts, name='contacts'),
-    url(r'^$', index, name='index'),
-    url(r'^cart/', include('cart.urls', namespace='cart')),
     url(r'^shop/', include('shop.urls', namespace='shop')),
+    url(r'^$', index, name='index'),
+    url(r'^cart_adding/', include('orders.urls')),
+    url(r'^cart/', include('cart.urls', namespace='cart')),
+    url(r'^user/', include('userManagementApp.urls', namespace='user')),
     url(r'^mycart/', include('myCartApp.urls', namespace='mycart'))
 
 ]

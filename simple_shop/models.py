@@ -39,3 +39,5 @@ class OrderingBaseModel(BaseModel):
 
     class Meta:
         abstract = True
+
+

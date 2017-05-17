@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 {% load staticfiles %}
 
 <html lang="ru">
@@ -26,44 +26,39 @@
     <script src="{% static 'js/jquery.min.js/' %}"></script>
     <script src="{% static 'js/scripts.js/' %}"></script>
 
-
-
     <title> {{ title|title }} </title>
 </head>
 <!-- END HEAD -->
     <!-- BODY -->
     <body>
-    <div class="bg">
-        <header>
+
+        <header class="container">
             {% block header %}
-                {% include 'inc/inc-header.html' %}
-                {% block header_promo %}{% endblock %}
+
+            {% include 'inc/inc-header.html' %}
+
             {% endblock %}
         </header>
 
-    </div>
 
-    {% block pix %}
-
+    {% block pix %} {% endblock %}
 
 
-    {% endblock %}
         <div class="container">
                 <div class="row">
                     {% block content %}
-                    {% include 'shop.html' %}
+
                     {% endblock %}
                 </div>
-
         </div>
-    </div>
-        <!-- FOOTER -->
-        <footer class="footer">
+                <!-- FOOTER -->
+                <footer class="footer">
 
-        {% block footer %}
-        {% include 'inc/inc-footer.html' %}
-        {% endblock %}
-        </footer>
+                {% block footer %}
+                {% include 'inc/inc-footer.html' %}
+                {% endblock %}
+
+                </footer>
 
     </body>
 <!-- END BODY -->
