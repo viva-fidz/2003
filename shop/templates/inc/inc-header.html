@@ -11,13 +11,21 @@
                 </nav>
         <!--CART-->
 
-                <div class="cart_top" onclick="toggle_cart()">                              <img src="{% static '/img/1.jpg/' %}">
-                </div>
+                <!--<div class="cart_top" >-->
+                <!--<img id="cart" src="{% static '/img/1.jpg/' %}">-->
+                <!--      <sup id="cart_total_nmb">-->
+                <!--        {% if products_total_nmb %}-->
+                <!--       ({{products_total_nmb}})-->
+                <!--       {% else %}-->
+                <!--        (0)-->
+                <!--        {% endif %}-->
+                <!--    </sup>-->
+                <!--</div>-->
             </div>
         </div>
     </div>
         <!--CART toggled-->
-    <div class="cart_toggled hide">
+    <div class="cart_toggled hidden">
         {% include 'cart/details.html' %}
     </div>
 

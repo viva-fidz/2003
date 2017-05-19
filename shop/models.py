@@ -24,13 +24,11 @@ class Category(MPTTModel, OrderingBaseModel):
     """
     Category of products
     extend ItemBaseModel
-    which has slug, name,
+    which has name,
     description, keywords
     """
-    slug = models.CharField(_("Slug"),
-                            default="",
 
-                            max_length=250)
+
     name = models.CharField(_("Название"),
                             default="",
                             max_length=250)
@@ -78,7 +76,6 @@ class Category(MPTTModel, OrderingBaseModel):
 class Product(OrderingBaseModel):
     category = models.ForeignKey(Category, related_name='products', verbose_name="Категория")
     name = models.CharField(max_length=200, db_index=True, verbose_name="Название")
-    slug = models.SlugField(max_length=200, db_index=True)
     image = models.ImageField(upload_to='products/%Y_%m_%d/', blank=True, verbose_name="Изображение товара")
     description = models.TextField(blank=True, verbose_name="Описание")
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Цена")

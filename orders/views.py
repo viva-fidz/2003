@@ -24,7 +24,7 @@ def cart_adding(request):
         new_product.nmb += int(nmb)
         new_product.save(force_update=True)
 
-    # products_total_nmb = ProductInCart.objects.filter(session_key=session_key, is_active=True).count()
+    products_total_nmb = ProductInCart.objects.filter(session_key=session_key, is_active=True).count()
     products_in_cart = ProductInCart.objects.filter(session_key=session_key, is_active=True)
     products_total_nmb = products_in_cart.count()
     print('products_in_cart=', products_in_cart)

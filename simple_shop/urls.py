@@ -29,8 +29,7 @@ urlpatterns = [
     url(r'^$', index, name='index'),
     url(r'^cart_adding/', include('orders.urls')),
     url(r'^cart/', include('cart.urls', namespace='cart')),
-    url(r'^user/', include('userManagementApp.urls', namespace='user')),
-    url(r'^mycart/', include('myCartApp.urls', namespace='mycart'))
+    url(r'^user/', include('userManagementApp.urls', namespace='user'))
 
 ]
 

@@ -8,8 +8,8 @@ from django.forms import TextInput, ModelForm, Textarea, Select
 
 # Модель категории
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ['name', 'slug']
-    prepopulated_fields = {'slug': ('name',)}
+    list_display = ['name']
+
 
 
 class CategoryPropertyInline(admin.TabularInline):
@@ -68,12 +68,6 @@ class FilterCategoryInline(admin.TabularInline):
     verbose_name_plural = 'Filters'
     suit_classes = 'suit-tab suit-tab-filters'
 
-    def get_prepopulated_fields(self, request, obj=None):
-        # can't use `prepopulated_fields = ..` because it breaks the admin validation
-        # for translated fields. This is the official django-parler workaround.
-        return {
-            'slug': ('name',)
-        }
 
 
 
@@ -88,7 +82,6 @@ class CategoryAdmin(MPTTModelAdmin):
             'classes': ('suit-tab', 'suit-tab-general',),
             'fields': [
                 'name',
-                'slug',
                 'title',
                 'description',
                 'keywords',
@@ -103,7 +96,6 @@ class CategoryAdmin(MPTTModelAdmin):
 # Модель товара
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ['name', 'slug', 'price', 'stock', 'available', 'created', 'updated']
+    list_display = ['name', 'price', 'stock', 'available', 'created', 'updated']
     list_filter = ['available', 'created', 'updated']
     list_editable = ['price', 'stock', 'available']
-    prepopulated_fields = {'slug': ('name', )}

@@ -6,7 +6,7 @@ def getting_cart_info(request):
     if not session_key:
         request.session.cycle_key()
 
-    products_in_cart = ProductInCart.objects.filter(session_key=session_key, is_active=True)
-    products_total_nmb = products_in_cart.count()
+    # products_in_cart = ProductInCart.objects.filter(session_key=session_key, is_active=True)
+    # products_total_nmb = products_in_cart.count()
 
     return locals()

@@ -11,13 +11,12 @@ def index(request):
     categories = Category.objects.all()
     products = Product.objects.all()
     title = 'Главная'
-
     session_key = request.session.session_key
     if not session_key:
         request.session.cycle_key()
     return render(request, 'index.html', {'title': title,
                                           'products': products,
-                                          'categories': categories,
+                                          'categories': categories
                                           })
 
 # Страница с товарами
