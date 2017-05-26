@@ -72,7 +72,7 @@ class FilterCategoryInline(admin.TabularInline):
 
 
 @admin.register(Category)
-class CategoryAdmin(MPTTModelAdmin):
+class CategoryAdmin(admin.ModelAdmin):
     inlines = [CategoryPropertyInline, FilterCategoryInline, ]
     suit_form_tabs = (('general', 'Основные'),
                       ('params', 'Параметры'),

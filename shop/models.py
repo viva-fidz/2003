@@ -65,6 +65,17 @@ class Category(MPTTModel, OrderingBaseModel):
     def get_absolute_url(self):
         return reverse('shop:ProductList', args=[self.id])
 
+    def get_products(self):
+        return Product.objects.filter(category=self)
+
+    def get_products_price(self):
+        products = Product.objects.filter(category=self)
+        return products.order_by('price')
+
+    def get_products_name(self):
+        products = Product.objects.filter(category=self)
+        return products.order_by('name')
+
     class Meta:
         verbose_name = _('Категория')
         verbose_name_plural = _('Категории')

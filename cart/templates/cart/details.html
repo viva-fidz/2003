@@ -1,20 +1,19 @@
 {% load static %}
-<div class="container">
+
     <div class="cart_body">
         <div class="cart_header text-center" id="cart_header">
             Ваша корзина товаров
         </div>
         <ul>
-            <!--{% for product_in_cart in products_in_cart %}-->
-            <!--<li>-->
-            <!--    {{ product_in_cart.product.name }} {{ product_in_cart.nmb }} шт.-->
-            <!--    по {{ product_in_cart.price_per_item }} р.-->
-            <!--    <a class="delete-item" href="" data-product_id="{{ product_in_cart.id }}">x</a>-->
-            <!--</li>-->
-            <!--{% endfor %}-->
+            {% for product_in_cart in products_in_cart %}
+            <br><li>
+             <b>{{ product_in_cart.product.name }}</b> {{ product_in_cart.nmb }} шт.  по {{ product_in_cart.price_per_item }} р.
+                <a class="delete-item" href="" data-product_id="{{ product_in_cart.id }}">x</a>
+
+            </li><br>
+            {% endfor %}
         </ul>
         <div class="cart_order text-center">
             <a href="#">Оформить заказ</a>
         </div>
     </div>
-</div>

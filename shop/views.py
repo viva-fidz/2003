@@ -8,23 +8,22 @@ from .models import Product
 
 # Create your views here.
 def index(request):
-    categories = Category.objects.all()
-    products = Product.objects.all()
     title = 'Главная'
     session_key = request.session.session_key
     if not session_key:
         request.session.cycle_key()
-    return render(request, 'index.html', {'title': title,
-                                          'products': products,
-                                          'categories': categories
-                                          })
+    categories = Category.objects.all()
+    return render(request, 'index.html', {
+        'categories': categories,
+        'title': title})
+
 
 # Страница с товарами
 def ProductList(request, id):
     category = get_object_or_404(Category, id=id)
     categories = Category.objects.all()
     products = Product.objects.all()
-    products.filter(category=category)
+    products = products.filter(category=category)
     return render(request, 'product/list.html', {
         'category': category,
         'categories': categories,
@@ -32,14 +31,25 @@ def ProductList(request, id):
     })
 
 
+
 def CategoryList(request):
+    title = 'категории'
     categories = Category.objects.all()
     products = Product.objects.all()
-    return render(request, 'category/list.html', {
+    return render(request, 'category/list.html', {'title': title,
         'categories': categories,
-        'products': products,
+        'products': products
 
     })
+
+
+def sale(request):
+    title = 'акции'
+    categories = Category.objects.all()
+    products = Product.objects.all()
+    return render(request, 'sale.html', {'title': title,
+                                        'products': products,
+                                        'categories': categories})
 
 
 # Страница товара
@@ -49,7 +59,7 @@ def ProductDetail(request, product_id=id):
     session_key = request.session.session_key
     if not session_key:
         request.session.cycle_key()
-    print(request.session.session_key)
+
     return render(request, 'product/detail.html', {'product': product, 'categories': categories} )
 
 
@@ -58,7 +68,7 @@ def contacts(request):
     categories = Category.objects.all()
     if request.method == 'POST':
         form = ContactForm(request.POST)
-        # Если форма заполнена корректно, сохраняем все введённые                   пользователем значения
+        # Если форма заполнена корректно, сохраняем все введённые пользователем значения
         if form.is_valid():
             subject = form.cleaned_data['subject']
             sender = form.cleaned_data['sender']

@@ -1,66 +1,42 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 
-
 {% block header %}
 <div class="row">
-    <div id="logo" class="col-md-2"> <img  src="{% static '/img/logo.png' %}"> LOGO </div>
-    <div class="promo_text col-md-8"> Lorem. We aim high at being focused on
+    <div id="logo" class="col-md-3"> <img  src="{% static '/img/logo.png' %}"> LOGO </div>
+    <div class="col-md-2">
+        <br>
+        <br>
+    </div>
+    <div class="promo_text col-md-7">
+    <br><br>Lorem. We aim high at being focused on
         building relationships with our clients and community.</div>
 
     <!--CART-->
-    <!--<div class="cart_top col-md-1">-->
-    <!--    <img id="cart" src="{% static '/img/1.jpg' %}">-->
-    <!--        <sup id="cart_total_nmb">-->
-    <!--            {% if products_total_nmb %}-->
+    <div class="cart_top col-md-1">
+        <!--<img id="cart" src="{% static '/img/1.jpg' %}">-->
+    <!--    <sup id="cart_total_nmb">-->
+    <!--        {% if products_total_nmb %}-->
     <!--        ({{products_total_nmb}})-->
-    <!--            {% else %}-->
-    <!--                (0)-->
-    <!--            {% endif %}-->
-    <!--        </sup>-->
-    <!--</div>-->
-</div>
-    <!--CART toggled-->
-    <div class="cart_toggled hidden">
-   {% include 'cart/details.html' %}
+    <!--        {% else %}-->
+    <!--        (0)-->
+    <!--        {% endif %}-->
+    <!--    </sup>-->
     </div>
-
-
-    {% include 'inc/inc-header.html' %}
+</div>
+<!--CART toggled-->
+<!--<div class="cart_toggled hidden">-->
+<!--    {% include 'cart/details.html' %}-->
+<!--</div>-->
+{% include 'inc/inc-header.html' %}
+{% endblock %}
+{% block pix %}
+    <div class="container">
+         <div class="row">        {% include 'inc/pix-promo.html' %}
+         </div>
+    </div>
 {% endblock %}
 
-
-{% block pix %}
-<div class="container">
-    <div class="row">
-{% include 'inc/pix-promo.html' %}    </div>
-</div>
- {% endblock %}
- {% block content %}<div class="container">
-{% for category in categories %}
-<section>
-    <p class="shop_category text-center grp-collapse">
-        <a href="shop/category/{{ category.id }}/">{{ category.name }}</a>
-    </p>
-    <div class="row">
-         {% for product in products %}
-
-        <div class="thumbnails col-md-3 col-xs-6">
-              <div class="thumbnail">
-                     <form action="/cart/CartAdd/{{product.id}}" method="POST">
-                    <a href="/shop/product/{{product.id}}">
-                        <img src="/media/{{ product.image }}" alt="{{ product.name }}">
-                        <h3>{{ product.name }}</h3>
-                        <p>{{ product.category }}</p>
-                        <p>{{ product.price }}</p>
-                    </a>
-                      {% csrf_token %}
-                  <input type="submit" value="Добавить в корзину">
-                  </form>
-              </div>
-         </div>
-        {% endfor %}
-    </div>
-</section>
-{% endfor %}   </div>
+{% block content %}
+{% include 'shop.html' %}
 {% endblock %}

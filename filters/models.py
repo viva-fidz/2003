@@ -13,10 +13,6 @@ class FilterCategory(OrderingBaseModel):
         on_delete=models.CASCADE,
         related_name='filtercategories',
         verbose_name =_('Category'))
-    slug = models.CharField(_("Slug"),
-            default="",
-            blank=True,
-            max_length=250)
     name = models.CharField(_("Name"),
             default="",
             max_length=250)
@@ -35,10 +31,6 @@ class FilterSelect(OrderingBaseModel):
         on_delete=models.CASCADE,
         related_name='filterselect',
         verbose_name =_('Filter Category'))
-    slug = models.CharField(_("Slug"),
-            default="",
-            blank=True,
-            max_length=250)
     url = models.CharField(_("Url"),
             default="",
             blank=True,

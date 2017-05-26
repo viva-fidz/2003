@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+            {% block content %}
+<section id="sale" class="col-md-7">
+<h1>Акции</h1>
+  {% for product in products %}
+  <div class='row'>
+    <div class="col-sm-4">
+        <img src="{{ product.image.url }}" class="img-responsive">
+    </div>
+    <div class="col-sm-8">
+        <h1>{{ product.name }}</h1>
+        <h2><a href="/shop/category/{{ product.category.id }}/">{{ product.category }}</a></h2>
+        <p class="price">
+            {{ product.price }} руб.
+        </p>
+        <span>
+        {{ product.description | linebreaks}}
+         </span>
+
+        <div>
+            <p class="price">{{ product.price }} руб.</p>
+
+        </div>
+    </div></div>
+ {% endfor %}
+</section>
+    {% endblock %}

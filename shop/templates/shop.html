@@ -1,31 +1,27 @@
-{% extends 'index.html' %}
-{% load staticfiles %}
-  {% block content %}
 {% for category in categories %}
 <section>
     <p class="shop_category text-center grp-collapse">
         <a href="shop/category/{{ category.id }}/">{{ category.name }}</a>
+        <button id="f_price">По цене</button>
+        <button id="f_name">По имени</button>
+
     </p>
-    <div class="row">
-         {% for product in products %}
+    <div class="row filter_category">
+        {% for product in category.get_products %}
+           {% include 'product/inc-product_summ.html' %}
+        {% endfor %}
+    </div>
 
-        <div class="thumbnails col-md-3 col-xs-">
-              <div class="thumbnail">
-                     <form action="/cart/CartAdd/{{product.id}}" method="POST">
-                    <a href="/shop/product/{{product.id}}">
+    <div class="row filter_price hidden">
+        {% for product in category.get_products_price %}
+        {% include 'product/inc-product_summ.html' %}
+        {% endfor %}
+    </div>
 
-                        <img src="/media/{{ product.image.url }}" alt="{{ product.name }}">
-
-                        <h3>{{ product.name }}</h3>
-                        <p>{{ product.category }}</p>
-                        <p>{{ product.price }}</p>
-                    </a>
-                      {% csrf_token %}
-                  <input type="submit" value="Добавить в корзину">
-                  </form>
-              </div>
-         </div>
+    <div class="row filter_name hidden">
+        {% for product in category.get_products_name %}
+        {% include 'product/inc-product_summ.html' %}
         {% endfor %}
     </div>
 </section>
-{% endfor %}  {% endblock %}
+{% endfor %}

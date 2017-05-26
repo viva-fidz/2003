@@ -27,6 +27,7 @@ urlpatterns = [
     url(r'^contacts/$', contacts, name='contacts'),
     url(r'^shop/', include('shop.urls', namespace='shop')),
     url(r'^$', index, name='index'),
+    url(r'^sale/$', sale, name='sale'),
     url(r'^cart_adding/', include('orders.urls')),
     url(r'^cart/', include('cart.urls', namespace='cart')),
     url(r'^user/', include('userManagementApp.urls', namespace='user'))

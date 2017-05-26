@@ -1,15 +1,21 @@
 {% load staticfiles %}
-<div class="col-md-4">
+<div class="col-md-3">
    <ul>
        {% for category in categories %}
        <li> <a href="/shop/category/{{ category.id }}/">{{ category.name }}</a> </li>
        {% endfor %}
    </ul>
 </div>
-<div class="col-md-4">
+<div class="col-md-3">
    <ul>
        <li> +7 (777) 77 77 </li>
        <li> magazine@magaz.in</li>
    </ul>
 </div>
-<div class="col-md-4">г. Москва, ул. Московская, д. 93</div>
+<div class="col-md-3">г. Москва, ул. Московская, д. 93</div>
+<div class="links col-md-3">
+   <a href='#'>insta</a>
+   <a href='#'>vk</a>
+   <a href='#'>facebook</a>
+
+</div>

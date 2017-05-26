@@ -1,31 +1,29 @@
 {% load staticfiles %}
-    <div class="container_top">
-        <div class="row">
-            <div class="col-xs-12">
-                <nav class="top_menu col-md-9">
+<div class=" nav container_top">
+    <div class="row">
 
-                    {% block menu %}
-                    {% include 'inc/inc-menu.html' %}
-                    {% endblock %}
+            <nav class="top_menu col-md-11">
 
-                </nav>
-        <!--CART-->
+                {% block menu %}
+                {% include 'inc/inc-menu.html' %}
 
-                <!--<div class="cart_top" >-->
-                <!--<img id="cart" src="{% static '/img/1.jpg/' %}">-->
-                <!--      <sup id="cart_total_nmb">-->
-                <!--        {% if products_total_nmb %}-->
-                <!--       ({{products_total_nmb}})-->
-                <!--       {% else %}-->
-                <!--        (0)-->
-                <!--        {% endif %}-->
-                <!--    </sup>-->
-                <!--</div>-->
-            </div>
-        </div>
+                <!--CART-->
+                <div class="cart_top text-left">
+                    <span id="cart">Корзина</span>
+                    <sup id="cart_total_nmb">
+                        {% if products_total_nmb %}
+                       ({{products_total_nmb}})
+                       {% else %}
+                        (0)
+                        {% endif %}
+                    </sup>
+                </div>
+            </nav>
+
     </div>
         <!--CART toggled-->
-    <div class="cart_toggled hidden">
+    <div class="cart_toggled hidden text-right">
         {% include 'cart/details.html' %}
+            {% endblock %}
     </div>
-
+</div>
