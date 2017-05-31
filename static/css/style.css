@@ -9,12 +9,10 @@ html {
 body {
     margin-bottom: 120px !important;
     font-family: 'Muli', sans-serif;
-
 }
 body a {
     color: black;
     font-family: 'Muli', sans-serif;
-
 }
 body a:hover, nav.top_menu a, footer a, #sidebar a:hover {
     color: rgb(210, 227, 74);
@@ -34,14 +32,13 @@ body > header:nth-child(1) > div:nth-child(1) {
 .container_shop {
      margin: 10px;
 }
-.container_top, #promo_text {
+.container_top{
     color: #ffd25a;
     background-color: #000;
 }
 .container_top{
     margin-left: -15px;
     margin-right: -15px;
-
 }
 .container_top a {
     text-decoration: none;
@@ -49,26 +46,26 @@ body > header:nth-child(1) > div:nth-child(1) {
 }
 .top_menu {
     float: left;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 5px;
 }
 .promo {
     display: flex;
     align-items: center;
-    margin: 20px;
+    min-width: 100%;
+    margin-bottom: 2px;
+
 }
 .container_top > div:nth-child(1) {
     margin-left:0;
     margin-right:0;
 }
 #logo {
-    margin: 20px;
+    margin: 10px;
     display: inline-block;
     float: left;
-}
-html body header.container div.container_top div.cart_toggled.text-right div.cart_body ul li  a {
-    color: white;
-    font-weight: 700;
+    margin-bottom: 0px;
+    margin-top: 0px;
 }
 li {
     list-style: none;
@@ -80,16 +77,25 @@ li {
    position:relative;
 }
 .cart_body {
-    background-color: rgba(0,0,0,.9);
-    width:30%;
+    background-color: rgba(0, 0, 0, .9);
+    width:100%;
     position: absolute;
     z-index: 2;
     right:0;
-    color: white;
     margin-right:0;
-    padding-bottom: 15px;
+    padding-bottom: 2px;
+    color:black;
 }
-
+.cart_body ul {
+    margin-left: 10px;
+}
+.item-list {
+    width: 30%;
+    background-color: white;
+    margin-bottom: 0;
+    margin-right: 2px;
+    float: right;
+}
 .delete-item {
     color: red  !important;
 }
@@ -98,21 +104,22 @@ li {
      padding-top: 20px;
      padding-bottom: 20px;
      color:black;
-
 }
 .cart_order{
      padding-bottom: 15px;
-     margin-top: 200px;
+     padding-top: 15px;
+     margin-top: 250px;
+     border-top: 1px solid #ffd25a;
 }
 .cart_order a{
-     color: #fff;
+     color: #000;
 }
 .thumbnail {
     display: block;
-    margin-top: 40px;
+    margin-top: 20px;
 }
 .product:hover img {
-	transform: scale(1.15);
+	transform: scale(1.05);
 	z-index:5;
 }
 #main, #sale, #sale img  {
@@ -132,15 +139,15 @@ li {
 .shop_category {
     font-size: 17px;
     background-color: #d2e34a;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 .shop_category button {
-    padding: 10px;
+    padding: 6px;
     border: 0px solid green;
     margin-right: 10px;
     float: right;
-    margin-top: -10px;
+    margin-top: -8px;
 }
 
 #contacts form {
@@ -167,4 +174,15 @@ li {
 .footer .links a {
     display: inline-block;
     margin-left: 20px;
+}
+.old {
+  filter: grayscale(.5) sepia(0.1);
+  transition: filter 1s ease-in-out;
+}
+
+.old:hover {
+  filter: grayscale(0) sepia(0);
+}
+.fa {
+    margin-right: 20px;
 }

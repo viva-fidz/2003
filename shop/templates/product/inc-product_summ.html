@@ -1,8 +1,10 @@
+{% load staticfiles %}
+
 <div class="thumbnails col-md-3 col-xs-">
     <div class="thumbnail">
         <form id="form_buying_product" action="{% url 'cart_adding' %}" method="POST" >
             <a class='product' href="/shop/product/{{product.id}}">
-                <img src="{{ product.image.url }}" class="img-responsive">
+                <img class="old"  src="{% static '/img/jacal.jpg' %}" class="img-responsive">
                 <h3>{{ product.name }}</h3>
                 <p>{{ product.category }}</p>
                 <p>{{ product.price }}</p>

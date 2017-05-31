@@ -76,6 +76,10 @@ class Category(MPTTModel, OrderingBaseModel):
         products = Product.objects.filter(category=self)
         return products.order_by('name')
 
+     def get_products_inquote(self):
+        products = Product.objects.filter(category=self)
+        return products[:4]
+
     class Meta:
         verbose_name = _('Категория')
         verbose_name_plural = _('Категории')

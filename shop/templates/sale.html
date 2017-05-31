@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
             {% block content %}
-<section id="sale" class="col-md-7">
+<section id="sale" class="col-md-7 center-block">
 <h1>Акции</h1>
   {% for product in products %}
   <div class='row'>
@@ -9,11 +9,12 @@
         <img src="{{ product.image.url }}" class="img-responsive">
     </div>
     <div class="col-sm-8">
+        <a class='product' href="/shop/product/{{product.id}}">
         <h1>{{ product.name }}</h1>
         <h2><a href="/shop/category/{{ product.category.id }}/">{{ product.category }}</a></h2>
         <p class="price">
             {{ product.price }} руб.
-        </p>
+        </p></a>
         <span>
         {{ product.description | linebreaks}}
          </span>

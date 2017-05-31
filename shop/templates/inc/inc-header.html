@@ -4,12 +4,15 @@
 
             <nav class="top_menu col-md-11">
 
-                {% block menu %}
-                {% include 'inc/inc-menu.html' %}
-
+                <div class="col-md-9">
+                    <a href="/">Главная</a>
+                    <a href="/shop/category/">Категории</a>
+                    <a href="/sale/">Акции</a>
+                    <a href="/contacts/">Контакты</a>
+                </div>
                 <!--CART-->
                 <div class="cart_top text-left">
-                    <span id="cart">Корзина</span>
+                    <span id="cart"> <i class="fa fa-shopping-cart fa-3x" aria-hidden="true"></i></span>
                     <sup id="cart_total_nmb">
                         {% if products_total_nmb %}
                        ({{products_total_nmb}})
@@ -24,6 +27,6 @@
         <!--CART toggled-->
     <div class="cart_toggled hidden text-right">
         {% include 'cart/details.html' %}
-            {% endblock %}
+
     </div>
 </div>

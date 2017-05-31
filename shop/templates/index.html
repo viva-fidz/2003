@@ -3,7 +3,7 @@
 
 {% block header %}
 <div class="row">
-    <div id="logo" class="col-md-3"> <img  src="{% static '/img/logo.png' %}"> LOGO </div>
+    <div id="logo" class="col-md-3"> <img src="{% static '/img/logo.png' %}"></div>
     <div class="col-md-2">
         <br>
         <br>
@@ -14,20 +14,8 @@
 
     <!--CART-->
     <div class="cart_top col-md-1">
-        <!--<img id="cart" src="{% static '/img/1.jpg' %}">-->
-    <!--    <sup id="cart_total_nmb">-->
-    <!--        {% if products_total_nmb %}-->
-    <!--        ({{products_total_nmb}})-->
-    <!--        {% else %}-->
-    <!--        (0)-->
-    <!--        {% endif %}-->
-    <!--    </sup>-->
     </div>
 </div>
-<!--CART toggled-->
-<!--<div class="cart_toggled hidden">-->
-<!--    {% include 'cart/details.html' %}-->
-<!--</div>-->
 {% include 'inc/inc-header.html' %}
 {% endblock %}
 {% block pix %}
